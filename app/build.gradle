@@ -4,6 +4,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('./../keystore')
+            storePassword '.E*L4U8K8u.4sE.28x_sH.Cu'
+            keyAlias 'release'
+            keyPassword 'Kmi-Y2J8Z-s7TbTgMWBpod_b'
+        }
+    }
     namespace 'me.tadebois.entain'
     compileSdk 33
 
@@ -22,8 +30,9 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
