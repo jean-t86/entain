@@ -3,7 +3,7 @@ package me.tadebois.entain.nedapi
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import kotlinx.coroutines.runBlocking
-import me.tadebois.entain.nedapi.ApiResonseTestData.GET_NEXT_TWO_RACES_RESPONSE
+import me.tadebois.entain.nedapi.ApiResponseTestData.GET_NEXT_TWO_RACES_RESPONSE
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.After

@@ -32,7 +32,7 @@ class NedApiTest {
     fun testGetNextRaces_success() = runBlocking {
         val responseType = object : TypeToken<ApiResponse>() {}.type
         val mockedResponse: ApiResponse = Gson().fromJson(
-            ApiResonseTestData.GET_NEXT_TWO_RACES_RESPONSE,
+            ApiResponseTestData.GET_NEXT_TWO_RACES_RESPONSE,
             responseType
         )
         `when`(apiService.getNextRaces()).thenReturn(mockedResponse)
