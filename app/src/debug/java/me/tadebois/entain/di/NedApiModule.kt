@@ -10,6 +10,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
+// Debug
 @Module
 @InstallIn(SingletonComponent::class)
 object NedApiModule {
