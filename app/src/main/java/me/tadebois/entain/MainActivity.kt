@@ -1,6 +1,7 @@
 package me.tadebois.entain
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -56,11 +57,12 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun handleError(e: Exception) {
-        Timber.w("Network Layer Under Construction.")
+        Toast.makeText(this, "Error", Toast.LENGTH_LONG).show()
+        Timber.e(e)
     }
 
     private fun handleApiResponse(response: ApiResponse) {
-        Timber.w("Network Layer Under Construction")
+        Toast.makeText(this, "Success", Toast.LENGTH_LONG).show()
     }
 }
 
