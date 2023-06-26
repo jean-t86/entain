@@ -1,6 +1,6 @@
 package me.tadebois.entain.nedapi
 
-object ApiResonseTestData {
+object ApiResponseTestData {
     const val GET_NEXT_TWO_RACES_RESPONSE = """
             {
                 "status": 200,
