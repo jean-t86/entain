@@ -1,18 +1,22 @@
 package me.tadebois.entain.nedapi
 
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
+@Keep
 data class ApiResponse(
     @SerializedName("status") val status: Int,
     @SerializedName("data") val data: ApiData,
     @SerializedName("message") val message: String
 )
 
+@Keep
 data class ApiData(
     @SerializedName("next_to_go_ids") val nextToGoIds: List<String>,
     @SerializedName("race_summaries") val raceSummaries: Map<String, RaceSummary>
 )
 
+@Keep
 data class RaceSummary(
     @SerializedName("race_id") val raceId: String,
     @SerializedName("race_name") val raceName: String,
@@ -28,10 +32,12 @@ data class RaceSummary(
     @SerializedName("venue_country") val venueCountry: String
 )
 
+@Keep
 data class AdvertisedStart(
     @SerializedName("seconds") val seconds: Long
 )
 
+@Keep
 data class RaceForm(
     @SerializedName("distance") val distance: Int,
     @SerializedName("distance_type") val distanceType: DistanceType,
@@ -47,18 +53,21 @@ data class RaceForm(
     @SerializedName("race_comment_alternative") val raceCommentAlternative: String
 )
 
+@Keep
 data class DistanceType(
     @SerializedName("id") val id: String,
     @SerializedName("name") val name: String,
     @SerializedName("short_name") val shortName: String
 )
 
+@Keep
 data class TrackCondition(
     @SerializedName("id") val id: String,
     @SerializedName("name") val name: String,
     @SerializedName("short_name") val shortName: String
 )
 
+@Keep
 data class Weather(
     @SerializedName("id") val id: String,
     @SerializedName("name") val name: String,
