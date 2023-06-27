@@ -5,13 +5,19 @@ plugins {
     id 'com.google.dagger.hilt.android'
 }
 
+def properties = new Properties()
+def configPropertiesFile = file("../config.properties")
+if (configPropertiesFile.exists()) {
+    properties.load(new FileInputStream(configPropertiesFile))
+}
+
 android {
     signingConfigs {
         release {
             storeFile file('./../keystore')
-            storePassword '.E*L4U8K8u.4sE.28x_sH.Cu'
-            keyAlias 'release'
-            keyPassword 'Kmi-Y2J8Z-s7TbTgMWBpod_b'
+            storePassword properties.getProperty("keystorePassword")
+            keyAlias properties.getProperty("keyAlias")
+            keyPassword properties.getProperty("keyPassword")
         }
     }
     namespace 'me.tadebois.entain'

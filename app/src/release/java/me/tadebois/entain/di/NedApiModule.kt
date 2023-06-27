@@ -31,4 +31,3 @@ object NedApiModule {
         return retrofit.create(NedApiService::class.java)
     }
 }
-
