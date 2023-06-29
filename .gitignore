@@ -89,3 +89,4 @@ lint/tmp/
 app/.DS_Store
 
 config.properties
+app/release
