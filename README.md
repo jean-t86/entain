@@ -2,20 +2,22 @@
 
 ## Environment setup
 
-If you only plan on running the app in it's debug build type configuration, skip this section.
+If you only plan on running the app in it's **debug** build type configuration, skip this section.
 
-If you want to run the application in it's release configuration, you will need to obtain the
-keystore credentials and secrets. Those are temporarily stored in a 1Password vault in my personal
-1Password account.
+If you want to run the application in it's **release** configuration, you will need to first
+run `setup-dev-environment.sh` in order to fetch the app's signing secrets from 1Password.
 
-In an industry setting, we could use a different Secrets Manager software.
+For `setup-dev-environment.sh` to run successfully, you need to edit the script and
+replace `TOKEN_PLACEHOLDER` with the **Service Account Token** tied for the Entain vault. For the
+time being, the token is stored in the same vault.
 
-For now, I will pass on `config.properties` with the right credentials via email attachment. The
-future goal is to write a script that automatically fetches the credentials and
-generates `config.properties` file. It will be called `setup_dev_environment.sh`.
+Once you've replaced `TOKEN_PLACEHOLDER` with the token value,
+run `chmod +x setup-dev-environment.sh` in your terminal in the project's root. This command will
+allow you to run the script on your machine.
 
-Copy the attached file to the project's root folder, making sure to overwrite the existing mock
-file.
+Finally, in the terminal, run the script with `./setup-dev-environment.sh`.
+
+This will generate the `config.properties` file with the required app's secrets.
 
 You can now run the application in the Release build type.
 
