@@ -6,8 +6,7 @@ if ! command -v op &> /dev/null; then
     exit 1
 fi
 
-# Authenticate with 1Password CLI
-eval "$(op signin --account my.1password.com)"
+export OP_SERVICE_ACCOUNT_TOKEN=TOKEN_PLACEHOLDER
 
 # Retrieve the secrets from 1Password vault
 keystorePassword=$(op read "op://Entain/Entain Android Keystore/password")
