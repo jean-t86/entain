@@ -47,7 +47,7 @@ class NedApiServiceTest {
         assertEquals(200, response.status)
         assertNotNull(response.data)
         assertEquals(2, response.data.nextToGoIds.count())
-        assertEquals("Success", response.message)
+        assertEquals("Next 2 races from each category", response.message)
 
         val recordedRequest = mockWebServer.takeRequest()
         assertEquals("/rest/v1/racing/?method=nextraces&count=2", recordedRequest.path)
