@@ -2,10 +2,12 @@ package me.tadebois.entain.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+val light_primary = Color(0xFFF17200)
+val light_primaryContainer = Color(0xFFF17200)
+val light_onPrimaryContainer = Color(0xFFFFFBFF)
+val light_background = Color(0xFFFFFBFF)
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+val dark_primary = Color(0xFFF17200)
+val dark_primaryContainer = Color(0xFFF17200)
+val dark_onPrimaryContainer = Color(0xFFFFFBFF)
+val dark_background = Color(0xFF1D1C16)
