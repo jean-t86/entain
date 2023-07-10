@@ -15,16 +15,18 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
-private val DarkColorScheme = darkColorScheme(
-    primaryContainer = dark_primaryContainer,
-    onPrimaryContainer = dark_onPrimaryContainer,
-    background = dark_background,
-)
-
 private val LightColorScheme = lightColorScheme(
+    primary = light_primary,
     primaryContainer = light_primaryContainer,
     onPrimaryContainer = light_onPrimaryContainer,
     background = light_background
+)
+
+private val DarkColorScheme = darkColorScheme(
+    primary = dark_primary,
+    primaryContainer = dark_primaryContainer,
+    onPrimaryContainer = dark_onPrimaryContainer,
+    background = dark_background,
 )
 
 @Composable
