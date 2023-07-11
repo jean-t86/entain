@@ -7,6 +7,10 @@ import javax.inject.Singleton
 
 @Singleton
 class RaceRepository @Inject constructor(private val raceDao: RaceDao) {
+    suspend fun insertRace(race: Race) {
+        raceDao.insert(race)
+    }
+
     suspend fun getAllRaces(): List<Race> {
         return raceDao.getAllRaces()
     }
