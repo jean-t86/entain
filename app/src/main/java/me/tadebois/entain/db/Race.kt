@@ -8,6 +8,6 @@ data class Race(
     @PrimaryKey
     val id: String,
     val race: String,
-    val category_id: String,
+    val categoryId: String,
     val advertisedStart: Long
 )

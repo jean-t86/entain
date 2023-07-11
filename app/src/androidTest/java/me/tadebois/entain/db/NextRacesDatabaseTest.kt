@@ -31,13 +31,13 @@ class NextRacesDatabaseTest {
         val race1 = Race(
             id = "ad5eb570-cdcb-48e8-8aa1-d2c2c5f18b99",
             race = "R1 NORTHFIELD PARK",
-            category_id = "161d9be2-e909-4326-8c2c-35ed71fb460b",
+            categoryId = "161d9be2-e909-4326-8c2c-35ed71fb460b",
             advertisedStart = System.currentTimeMillis()
         )
         val race2 = Race(
             id = "cbedc67a-5076-4be0-8228-ca0354f451a7",
             race = "R2 YONKERS RACEWAY",
-            category_id = "161d9be2-e909-4326-8c2c-35ed71fb460b",
+            categoryId = "161d9be2-e909-4326-8c2c-35ed71fb460b",
             advertisedStart = System.currentTimeMillis()
         )
         raceDao.insert(race1)
