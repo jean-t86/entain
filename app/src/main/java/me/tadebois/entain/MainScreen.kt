@@ -22,6 +22,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import me.tadebois.entain.db.Race
 import me.tadebois.entain.ui.theme.EntainTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -53,11 +54,7 @@ fun EntainApp() {
             color = MaterialTheme.colorScheme.background
         ) {
             Column(verticalArrangement = Arrangement.SpaceEvenly) {
-                NextRace()
-                NextRace()
-                NextRace()
-                NextRace()
-                NextRace()
+                NextRaces()
             }
         }
     }
@@ -69,6 +66,14 @@ fun EntainPreview() {
     EntainTheme {
         EntainApp()
     }
+}
+
+@Composable
+fun NextRaces(
+    races: List<Race> = listOf(),
+    modifier: Modifier = Modifier
+) {
+
 }
 
 @Composable
