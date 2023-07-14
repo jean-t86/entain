@@ -12,20 +12,15 @@ import kotlinx.coroutines.launch
 import me.tadebois.entain.nedapi.ApiResponse
 import me.tadebois.entain.nedapi.NedApi
 import me.tadebois.entain.ui.theme.EntainTheme
-import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    @Inject
-    lateinit var raceRepository: RaceRepository
-    private val raceViewModel: RaceViewModel by viewModels { RaceViewModelFactory(raceRepository) }
+    private val raceViewModel: RaceViewModel by viewModels()
 
     @Inject
     lateinit var nedApi: NedApi
-
-    // Create a CoroutineScope to manage coroutines
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,16 +41,16 @@ class MainActivity : ComponentActivity() {
                 handleError(e)
             }
         }
+
+        raceViewModel.updatedRaces.observe(this) { races ->
+            print("There are ${races.count()} races")
+        }
     }
 
-    private fun handleError(e: Exception) {
-        Toast.makeText(this, "Error", Toast.LENGTH_LONG).show()
-        Timber.e(e)
-    }
+    private fun print(message: String) =
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
 
-    private fun handleApiResponse(response: ApiResponse) {
-        Toast.makeText(this, "Success", Toast.LENGTH_LONG).show()
-    }
+    private fun handleError(e: Exception) = print(e.message)
+
+    private fun handleApiResponse(response: ApiResponse) = print(response.message)
 }
-
-

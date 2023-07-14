@@ -2,30 +2,45 @@ package me.tadebois.entain
 
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import me.tadebois.entain.db.Race
+import me.tadebois.entain.repository.RaceRepository
 import javax.inject.Inject
 
 @HiltViewModel
-class RaceViewModel @Inject constructor(private val raceRepository: RaceRepository) :
-    ViewModel() {
-    val races: SnapshotStateList<Race> = mutableStateListOf()
+class RaceViewModel @Inject constructor(private val raceRepository: RaceRepository) : ViewModel() {
+    private val _updatedRaces = MutableLiveData<List<Race>>()
+    val updatedRaces: LiveData<List<Race>> = _updatedRaces
 
-    fun addRace(race: Race) {
-        viewModelScope.launch(Dispatchers.IO) {
-            raceRepository.insertRace(race)
-        }
+    private val _races = mutableStateListOf<Race>()
+    val races: SnapshotStateList<Race> = _races
+
+    init {
+        getAllRaces()
     }
 
     fun getAllRaces() {
-        viewModelScope.launch(Dispatchers.IO) {
-            val allRaces = raceRepository.getAllRaces()
-            races.clear()
-            races.addAll(allRaces)
+        viewModelScope.launch {
+            _races.clear()
+            _races.addAll(raceRepository.getAllRaces())
+            racesUpdated()
+        }
+    }
+
+    private fun racesUpdated() {
+        _updatedRaces.value = _races.toList()
+    }
+
+    fun addRace(race: Race) {
+        viewModelScope.launch {
+            _races.add(race)
+            racesUpdated()
+            raceRepository.insertRace(race)
         }
     }
 }
