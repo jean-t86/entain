@@ -7,6 +7,8 @@ interface NedApiService {
     @GET("rest/v1/racing/")
     suspend fun getNextRaces(
         @Query("method") method: String = "nextraces",
-        @Query("count") count: Int = 2
+        @Query("count") count: Int = MAX_RACES
     ): ApiResponse
 }
+
+const val MAX_RACES = 60
