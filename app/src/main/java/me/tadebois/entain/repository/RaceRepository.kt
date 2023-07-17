@@ -12,10 +12,6 @@ class RaceRepository @Inject constructor(private val raceDao: RaceDao) {
         raceDao.insertAll(races)
     }
 
-    suspend fun insertRace(race: Race) {
-        raceDao.insert(race)
-    }
-
     fun getAllRaces(): Flow<List<Race>> {
         return raceDao.getAllRaces()
     }
