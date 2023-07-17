@@ -6,11 +6,9 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
-import me.tadebois.entain.db.NextRacesDatabase
 import me.tadebois.entain.db.Race
 import me.tadebois.entain.nedapi.NedApi
 import timber.log.Timber
-import javax.inject.Inject
 
 @HiltWorker
 class DataSyncWorker @AssistedInject constructor(
@@ -30,10 +28,8 @@ class DataSyncWorker @AssistedInject constructor(
                     raceSummary.advertisedStart.seconds
                 )
             }
-            Timber.d("Total races: ${races.count()}")
 
-            // TODO: Implement insertion logic into the database
-            raceRepository.insertRace(races[0])
+            raceRepository.insertRaces(races)
 
             return Result.success()
         } catch (e: Exception) {
@@ -42,4 +38,3 @@ class DataSyncWorker @AssistedInject constructor(
         }
     }
 }
-

@@ -8,16 +8,8 @@ import javax.inject.Singleton
 
 @Singleton
 class RaceRepository @Inject constructor(private val raceDao: RaceDao) {
-    suspend fun insertRace(race: Race) {
-        raceDao.insert(race)
-    }
-
-    suspend fun updateRace(race: Race) {
-        raceDao.updateRace(race)
-    }
-
-    suspend fun deleteRace(race: Race) {
-        raceDao.deleteRace(race)
+    suspend fun insertRaces(races: List<Race>) {
+        raceDao.insertAll(races)
     }
 
     fun getAllRaces(): Flow<List<Race>> {
