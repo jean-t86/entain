@@ -1,5 +1,6 @@
 package me.tadebois.entain.repository
 
+import kotlinx.coroutines.flow.Flow
 import me.tadebois.entain.db.Race
 import me.tadebois.entain.db.RaceDao
 import javax.inject.Inject
@@ -19,7 +20,7 @@ class RaceRepository @Inject constructor(private val raceDao: RaceDao) {
         raceDao.deleteRace(race)
     }
 
-    suspend fun getAllRaces(): List<Race> {
+    fun getAllRaces(): Flow<List<Race>> {
         return raceDao.getAllRaces()
     }
 }
