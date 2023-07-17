@@ -11,6 +11,9 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface RaceDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(races: List<Race>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(race: Race)
 
     @Update
