@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface RaceDao {
@@ -19,7 +20,7 @@ interface RaceDao {
     suspend fun deleteRace(race: Race)
 
     @Query("SELECT * FROM races")
-    suspend fun getAllRaces(): List<Race>
+    fun getAllRaces(): Flow<List<Race>>
 
     @Query("SELECT * FROM races WHERE id = :id")
     suspend fun getRaceById(id: String): Race?

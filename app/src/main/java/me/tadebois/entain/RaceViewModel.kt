@@ -21,14 +21,16 @@ class RaceViewModel @Inject constructor(private val raceRepository: RaceReposito
     val races: SnapshotStateList<Race> = _races
 
     init {
-        getAllRaces()
+        observeRaces()
     }
 
-    fun getAllRaces() {
+    private fun observeRaces() {
         viewModelScope.launch {
-            _races.clear()
-            _races.addAll(raceRepository.getAllRaces())
-            racesUpdated()
+            raceRepository.getAllRaces().collect { races ->
+                _races.clear()
+                _races.addAll(races)
+                racesUpdated()
+            }
         }
     }
 
