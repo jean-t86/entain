@@ -37,12 +37,4 @@ class RaceViewModel @Inject constructor(private val raceRepository: RaceReposito
     private fun racesUpdated() {
         _updatedRaces.value = _races.toList()
     }
-
-    fun addRace(race: Race) {
-        viewModelScope.launch {
-            _races.add(race)
-            racesUpdated()
-            raceRepository.insertRace(race)
-        }
-    }
 }

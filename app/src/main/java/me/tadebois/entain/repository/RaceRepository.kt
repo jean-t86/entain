@@ -16,14 +16,6 @@ class RaceRepository @Inject constructor(private val raceDao: RaceDao) {
         raceDao.insert(race)
     }
 
-    suspend fun updateRace(race: Race) {
-        raceDao.updateRace(race)
-    }
-
-    suspend fun deleteRace(race: Race) {
-        raceDao.deleteRace(race)
-    }
-
     fun getAllRaces(): Flow<List<Race>> {
         return raceDao.getAllRaces()
     }
